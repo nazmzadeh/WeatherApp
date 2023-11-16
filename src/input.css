@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply p-0 m-0 box-border font-['Quicksand'];
+  }
+}
+
+.weather-detail-box {
+  @apply bg-main-blue text-smoke-white p-5 rounded-2xl w-full lg:w-[31%] min-h-[150px] flex gap-[7px] flex-col;
+}
+.value {
+  @apply text-3xl text-white;
+}
+.alert-box {
+  @apply absolute z-[60] text-white font-bold rounded-lg p-5 min-h-[64px] w-60 lg:w-96 top-[5%] opacity-0 transition-all duration-500;
+}
+.alert-box-overlay {
+  @apply absolute bg-[#000000] w-full h-full z-0 opacity-0 transition-all duration-500 hidden;
+}

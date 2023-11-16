@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="assets/css/output.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div
+      class="loader-container w-full h-full absolute bg-load-blue z-50 flex items-center justify-center"
+    >
+      <span class="w-[48px] h-[48px] rounded-full animate-loaderAnimate"></span>
+    </div>
+    <div class="alert-box-overlay"></div>
+    <div class="flex justify-center">
+      <div class="alert-box">
+        <p></p>
+        <button class="absolute text-lg right-3 top-1">x</button>
+      </div>
+    </div>
+
+    <div class="myContainer">
+      <div class="flex flex-col lg:flex-row">
+        <div class="left-part p-6 lg:w-[33%] w-full">
+          <form class="relative" id="search-form">
+            <input
+              type="text"
+              class="p-6 border-0 bg-main-gray h-11 w-full text-main-blue border-main-blue focus:outline-main-blue rounded-3xl"
+              placeholder="Search city"
+            />
+            <button type="submit" class="absolute right-4 top-2">
+              <i
+                class="fa-solid fa-magnifying-glass text-main-blue text-lg"
+              ></i>
+            </button>
+          </form>
+          <div class="weather-info text-center p-4 flex flex-col gap-9">
+            <div class="weather-img">
+              <img src="" alt="weather" class="w-36 m-auto" />
+            </div>
+            <div class="temperature-info">
+              <p class="text-6xl relative">
+                <span class="degree"></span
+                ><span class="text-3xl absolute top-0"> o</span>
+                <span class="text-5xl"> C</span>
+              </p>
+              <p class="text-lg mt-2 description capitalize"></p>
+              <hr class="w-64 m-auto text-main-gray border-2 mt-5" />
+            </div>
+            <div class="date-info">
+              <p class="date"></p>
+              <p class="time text-xl">Friday, 02:23 PM</p>
+              <p class="time-status">Day</p>
+            </div>
+            <div class="location-info mt-6">
+              <p class="text-4xl">
+                <span class="city"></span> , <span class="country"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="right-part lg:w-[67%] w-full p-6 bg-main-gray">
+          <div class="days text-2xl text-main-blue">
+            <div class="day"><p>Today</p></div>
+          </div>
+          <div
+            class="weather-details lg:flex-row flex flex-col flex-wrap gap-8 mt-5"
+          >
+            <div class="weather-detail-box">
+              <p class="title">Wind</p>
+              <p class="value text-3xl text-white speed"><span></span> M/s</p>
+              <p class="wind-direction"><span></span> deg</p>
+            </div>
+            <div class="weather-detail-box">
+              <p class="title">Humidity</p>
+              <p class="value text-3xl text-white humidity"><span></span> %</p>
+            </div>
+            <div class="weather-detail-box">
+              <p class="title">Real Feel</p>
+              <p class="value real-feel"><span></span>° C</p>
+            </div>
+            <div class="weather-detail-box">
+              <p class="title">Pressure</p>
+              <p class="value pressure"><span></span> mbbar</p>
+            </div>
+            <div class="weather-detail-box">
+              <p class="title">Temperature history</p>
+              <p class="value temp-min flex items-center gap-[6px]">
+                <i class="fa-solid fa-up-long text-2xl text-red-400"></i
+                ><span> </span> ° C
+              </p>
+              <p class="value temp-max flex items-center gap-[6px]">
+                <i class="fa-solid fa-down-long text-2xl text-green-300"></i
+                ><span> </span> ° C
+              </p>
+            </div>
+            <div class="weather-detail-box">
+              <p class="title">Sun</p>
+              <p class="value rise flex items-center gap-[16px]">
+                <span class="text-lg w-[35px]">Rise</span>
+                <span></span>
+              </p>
+              <p class="value set flex items-center gap-[16px]">
+                <span class="text-lg w-[35px]">Set</span>
+                <span></span>
+              </p>
+            </div>
+            <div class="weather-detail-box">
+              <p class="title">Clouds</p>
+              <p class="value clouds"><span></span> %</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/main.js"></script>
+  </body>
+</html>
