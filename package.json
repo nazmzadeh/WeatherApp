@@ -3,6 +3,10 @@
     "tailwindcss": "^3.3.5"
   },
   "scripts": {
-    "dev":"tailwindcss -i ./src/input.css -o ./dist/assets/css/output.css --watch"
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/assets/css/output.css --watch"
+  },
+  "dependencies": {
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0"
   }
 }

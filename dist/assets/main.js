@@ -8,6 +8,7 @@ let city = document.querySelector(".location-info .city")
 let country = document.querySelector(".location-info .country")
 let date = document.querySelector(".date-info .date")
 let time = document.querySelector(".date-info .time")
+let timeStatus = document.querySelector(".date-info .time-status")
 let title = document.querySelector(".weather-detail-box .title")
 let windSpeed = document.querySelector(".speed span")
 let windDirection = document.querySelector(".wind-direction span");
@@ -41,7 +42,7 @@ function handleCustomAlert(alerttext, alertcolor) {
     alertText.innerText = alerttext;
     alertBox.style.backgroundColor = alertcolor;
     let closebutton = document.querySelector("button")
-    alertBox.style.opacity = 1
+    alertBox.style.opacity = 1;
     alertBoxOv.style.display = "block";
     alertBoxOv.style.opacity = 0.6
     alertBoxOv.style.zIndex = 50
@@ -52,7 +53,6 @@ function handleCustomAlert(alerttext, alertcolor) {
 // Fetch data
 function fetchApi(cityValue, defaultApiUrl) {
     let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather/?q=${cityValue}&appid=${apiKey}`;
-    console.log(cityValue)
     if (cityValue === "") {
         weatherApiUrl = defaultApiUrl
     }
@@ -79,7 +79,6 @@ function fetchApi(cityValue, defaultApiUrl) {
             city.textContent = data.name;
             country.textContent = data.sys.country;
             date.textContent = convertTime(data.dt).toLocaleDateString("en", { day: "numeric", month: "long", year: "numeric" });
-
             time.textContent = convertTime(data.dt).toLocaleString("en", { weekday: "long", hour: "2-digit", minute: "2-digit" })
             windSpeed.textContent = data.wind.speed;
             windDirection.textContent = data.wind.deg;
@@ -91,7 +90,14 @@ function fetchApi(cityValue, defaultApiUrl) {
             rise.textContent = convertTime(data.sys.sunrise).toLocaleTimeString("en", { hour: "2-digit", minute: "2-digit" })
             set.textContent = convertTime(data.sys.sunset).toLocaleTimeString("en", { hour: "2-digit", minute: "2-digit" })
             clouds.textContent = data.clouds.all
+            if (data.dt <= data.sys.sunset && data.dt > data.sys.sunrise) {
+                timeStatus.textContent = "Day"
+
+            } else {
+                timeStatus.textContent = "Night"
+            }
             input.value = "";
+
         }
         )
         .catch(() => {
@@ -121,11 +127,11 @@ function getDefaultLocation() {
 
 
 }
-function showPosition(position) {
+async function showPosition(position) {
     let x = position.coords.latitude
     let y = position.coords.longitude
     let defaultApiUrl = `https://api.openweathermap.org/data/2.5/weather/?lat=${x}&lon=${y}&appid=${apiKey}`;
-    fetchApi("", defaultApiUrl)
+    await fetchApi("", defaultApiUrl)
     handleCustomAlert("Current location loaded.", "green")
 
 }
@@ -153,5 +159,6 @@ function showError(error) {
 function convertTime(dayTime) {
     const timestamp = dayTime;
     const dateData = new Date(timestamp * 1000);
-    return dateData
+    return dateData;
 }
+
