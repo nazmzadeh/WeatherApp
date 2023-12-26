@@ -1,3 +1,8 @@
 {
-  "builds": [{ "src": "**/**/*", "use": "@now/static" }]
+  "builds": [
+    {
+      "src": ["dist/**/*", "dist/*", "src/**/*", "src/*"],
+      "use": "@now/static"
+    }
+  ]
 }
